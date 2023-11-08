@@ -1,18 +1,18 @@
+var input = document.getElementById("myInput");
+var filter, trs, tr, tds, td;
+trs = stuData.getElementsByTagName('tr');
 
-var stuData = document.getElementsByClassName('stuData')[0];
-var trs = stuData.getElementsByTagName('tr');
+input.addEventListener('keyup', filter_All);
 
-function myFunction() {
-    var input, filter, tr, tds;
-    input = document.getElementById("myInput");
+
+
+function filter_All() {
     filter = input.value.toUpperCase();
-    // console.log(filter);
 
-    function filterTrData(tds) {
-        for (j = 0; j < tds.length; j++) {
-            if (tds[j].innerHTML.toUpperCase().indexOf(filter) > -1) {
-                console.log(tds[j].innerHTML);
-                // console.log(tr);
+    function isMatching(tds, filter) {
+        for (j = 0; j < 2; j++) {
+            td = tds[j].innerHTML.toUpperCase();
+            if (td.indexOf(filter) > -1) {
                 tr.classList.remove('hide');
                 return 0;
             }
@@ -25,8 +25,34 @@ function myFunction() {
     for (i = 0; i < trs.length; i++) {
         tr = trs[i];
         tds = tr.children;
-        filterTrData(tds);
+        isMatching(tds, filter);
     }
-
 }
 
+
+
+
+
+
+
+
+function filter_DOB() {
+    filter = input.value.toUpperCase();
+
+    function isMatching(td, filter) {
+        td = td.innerHTML.toUpperCase();
+        if (td.indexOf(filter) > -1) {
+            tr.classList.remove('hide');
+        }
+        else {
+            tr.classList.add('hide');
+        }
+        return 0;
+    }
+
+    for (i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        td = tr.children[1];
+        isMatching(td, filter);
+    }
+}

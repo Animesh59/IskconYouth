@@ -4,27 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIY</title>
+    <link rel="shortcut icon" href="./logo.jpg" type="image/x-icon">
+    <title>Iskcon Youth</title>
+
     <style>
         * {
             box-sizing: border-box;
+            /* margin: 0;
+            padding: 0; */
+        }
+
+        body {
+            background: linear-gradient(340deg, #aa5d0563, transparent);
+            height: 100vh;
         }
 
         .hide {
             display: none;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
         section {
             width: 95%;
-            /* border: 2px solid; */
+            border: 2px solid;
             height: 60vh;
             overflow: auto;
             margin: auto;
+            border-radius: 5px;
         }
 
         table {
@@ -40,6 +45,10 @@
             background-color: burlywood;
         }
 
+        tbody {
+            background: white;
+        }
+
         td,
         th {
             border: 1px solid #bababa;
@@ -48,62 +57,107 @@
         }
 
         #myInput {
-            background: url("./searchicon2.png");
-            background-position: 10px 12px;
-            background-repeat: no-repeat;
-            width: 50%;
+            background: url(./search-icon3.png) no-repeat;
+            background-size: 38px 38px;
+            /* background-position: 10px 12px; */
+            /* width: 50%; */
             font-size: 16px;
             padding: 12px 20px 12px 40px;
             border: 1px solid #ddd;
             margin: 12px;
         }
+
+        #myInput:focus {
+            border: black;
+        }
+
+        #btn {
+            position: absolute;
+            right: 10px;
+            height: 21px;
+            width: 29px;
+        }
+
+        #btn:focus {
+            border-color: black;
+            border-radius: 2px;
+        }
+
+        #btn img {
+            width: 15px;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        header h2 {
+            font-family: math;
+            color: #0306a1;
+            text-shadow: -6px -3px 11px red, 0px 4px 7px green;
+        }
+
+        header img {
+            width: 120px;
+            /* text-shadow: -3px 7px black; */
+            /* border-radius: 50%; */
+            /* box-shadow: 0px 6px 15px 0px black; */
+        }
     </style>
 </head>
 
 <body>
-    <h2>Berhampore Iskcon Youth</h2>
+    <header>
+        <img src="logo-removebg-preview.png" alt="">
+        <!-- <h2>Iskcon Youth</h2> -->
+    </header>
 
-    <section>
-        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"
+    <div>
+
+        <input type="text" id="myInput" placeholder="Search into whole table..." title="Type in a name"
             autocomplete="off">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>D-O-B</th>
-                </tr>
-            </thead>
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>D-O-B<button type="button" id="btn"><img src="./icon-filter.png" alt="filter"></button></th>
+                    </tr>
+                </thead>
+                <tbody class="stuData"></tbody>
+            </table>
+        </section>
 
-            <tbody class="stuData"></tbody>
-        </table>
-    </section>
+    </div>
+
 
     <script>
         var stuData = document.querySelector(".stuData");
-        var wholeData =
-            fetch("./sample.json")
-                .then(res => res.json())
-                .then(data => {
-                    data.forEach(element => {
-                        // console.log(element);
-                        wholeData = data;
-                        appendData(element);
-                    });
-                });
+        function appendData(data) {
+            let tr = document.createElement('tr');
+            let tdName = document.createElement('td');
+            let tdDOB = document.createElement('td');
 
-        function appendData(element) {
-            var tr = document.createElement('tr');
-            var tdName = document.createElement('td');
-            var tdDOB = document.createElement('td');
-
-            tdName.innerHTML = element.name;
-            tdDOB.innerHTML = element.DOB;
+            tdName.innerHTML = data.name;
+            tdDOB.innerHTML = data.DOB;
             tr.append(tdName, tdDOB);
             stuData.append(tr);
         }
+
+        fetch("./sample.json")
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(data => {
+                    appendData(data);
+                });
+            });
     </script>
     <script src="./filter.js"></script>
+    <script src="./temp.js"></script>
 </body>
 
 </html>
