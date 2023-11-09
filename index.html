@@ -5,117 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./asset/logo.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
     <title>Iskcon Youth</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            /* margin: 0;
-            padding: 0; */
-        }
-
-        .hide {
-            display: none;
-        }
-
-        section {
-            width: 95%;
-            border: 2px solid;
-            /* height: 60vh; */
-            overflow: auto;
-            margin: auto;
-            border-radius: 5px;
-        }
-
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-            position: relative;
-        }
-
-        thead {
-            position: sticky;
-            top: -1px;
-            background-color: burlywood;
-        }
-
-        tbody {
-            background: white;
-        }
-
-        td,
-        th {
-            border: 1px solid #bababa;
-            text-align: left;
-            padding: 8px;
-        }
-
-        #myInput {
-            background: url(./asset/search-icon3.png) no-repeat;
-            background-size: 38px 38px;
-            /* background-position: 10px 12px; */
-            /* width: 50%; */
-            font-size: 16px;
-            padding: 12px 20px 12px 40px;
-            border: 1px solid #ddd;
-            margin: 12px;
-        }
-
-        #myInput:focus {
-            border: black;
-        }
-
-        #btn {
-            position: absolute;
-            right: 10px;
-            height: 21px;
-            width: 29px;
-        }
-
-        #btn:focus {
-            border-color: black;
-            border-radius: 2px;
-        }
-
-        #btn img {
-            width: 15px;
-        }
-
-        header {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        header h2 {
-            font-family: math;
-            color: #0306a1;
-            text-shadow: -6px -3px 11px red, 0px 4px 7px green;
-        }
-
-        header img {
-            width: 120px;
-            /* text-shadow: -3px 7px black; */
-            /* border-radius: 50%; */
-            /* box-shadow: 0px 6px 15px 0px black; */
-        }
-
-        #bgColor {
-            background: linear-gradient(340deg, #aa5d0563, transparent);
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: -100;
-        }
-
-        .textCenter {
-            text-align: center;
-        }
-    </style>
 </head>
 
 <body>
@@ -127,7 +18,6 @@
     <div id="bgColor"></div>
 
     <div>
-
         <input type="text" id="myInput" placeholder="Search into whole table..." title="Type in a name"
             autocomplete="off">
 
@@ -136,8 +26,7 @@
                 <thead>
                     <tr>
                         <th class="textCenter">Name</th>
-                        <th class="textCenter">D-O-B<button type="button" id="btn"><img src="./asset/icon-filter.png"
-                                    alt="filter"></button></th>
+                        <th class="textCenter">D-O-B<img src="./asset/icon-filter.png" alt="filter" id="btn"></th>
                     </tr>
                 </thead>
                 <tbody class="stuData"></tbody>
@@ -172,7 +61,7 @@
                         return -1;
                     }
                 })
-                console.log(data);
+                // console.log(data);
                 data.forEach(data => {
                     appendData(data);
                 });
