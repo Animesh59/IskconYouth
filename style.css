@@ -27,7 +27,7 @@ table {
 thead {
     position: sticky;
     top: -1px;
-    background-color: burlywood;
+    background-color: #73e089;
 }
 
 tbody {
@@ -53,7 +53,7 @@ th {
     transition: all 0.5s ease;
 }
 
-#myInput:focus{
+#myInput:focus {
     border-color: orange;
     transform: scale(1.05);
 }
@@ -95,7 +95,7 @@ header img {
 }
 
 #bgColor {
-    background: linear-gradient(340deg, #aa5d0563, transparent);
+    background: linear-gradient(340deg, #68f685, transparent);
     width: 100vw;
     height: 100vh;
     position: fixed;
